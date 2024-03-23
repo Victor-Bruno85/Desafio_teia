@@ -3,7 +3,7 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-@app.route('/analyze_string', methods=['POST', 'GET'])
+@app.route('/analyze_string', methods=['POST'])
 
 def srting_analist(): 
     data = request.get_json()
