@@ -1,0 +1,46 @@
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.HashMap;
+import java.util.Map;
+
+@SpringBootApplication
+public class StringAnalyzerApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(StringAnalyzerApplication.class, args);
+    }
+}
+
+@RestController
+class StringAnalyzerController {
+
+    @PostMapping("/analyze_string")
+    public Map<String, Object> analyzeString(@RequestBody Map<String, String> request) {
+        String text = request.getOrDefault("texto", "");
+
+        boolean palindrome = isPalindrome(text);
+        Map<Character, Integer> histogram = createHistogram(text);
+
+        Map<String, Object> response = new HashMap<>();
+        response.put("is_palindrome", palindrome);
+        response.put("histogram", histogram);
+
+        return response;
+    }
+
+    private boolean isPalindrome(String text) {
+        return text.equals(new StringBuilder(text).reverse().toString());
+    }
+
+    private Map<Character, Integer> createHistogram(String text) {
+        Map<Character, Integer> histogram = new HashMap<>();
+        for (char e : text.toCharArray()) {
+            histogram.put(e, histogram.getOrDefault(e, 0) + 1);
+        }
+        return histogram;
+    }
+}
