@@ -1,7 +1,7 @@
 import requests
 import json
 
-url = 'http://localhost:5000/analyze_string'
+url = 'https://render.com/docs/web-services#port-detection'
 data = {'texto': 'banana'}
 
 try:

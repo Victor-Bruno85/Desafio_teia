@@ -18,7 +18,7 @@ POST /analyze_string: Analisa a string de entrada e retorna informações sobre 
 # Uso
 
 
-Envie uma requisição POST para https://victor-bruno85.github.io/Desafio_teia/analyze_string com o seguinte payload JSON:
+Envie uma requisição POST para https://desafio-teia-538l.onrender.com/analyze_string com o seguinte payload JSON:
 
 
 # JSON
